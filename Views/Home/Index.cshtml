@@ -2,16 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
-    <url>
-        @foreach (var course in Model)
-        {
-            <li>
-                @course.DateTime.ToString("dd/MM/yyyy HH:mm") - @course.Name
-            </li>
-        }
-    </url>
-</div>
+
 
 @*<div class="jumbotron">
     <h1>ASP.NET</h1>
@@ -40,3 +31,14 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>*@
+
+<div class="row">
+    <ul>
+        @foreach (var course in Model)
+        {
+            <li>
+                @course.DateTime.ToString("dd/MM/yyyy HH:mm") - @course.Name
+            </li>
+        }
+    </ul>
+</div>

@@ -14,6 +14,7 @@ namespace BigSchool.Models
 
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
+        public object Attendances { get; internal set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -9,8 +9,10 @@ using System.Web.Mvc;
 
 namespace BigSchool.Controllers
 {
-    public class CoursesController : Controller
+    public class Courses : Controller
     {
+        public object Id { get; internal set; }
+
         // GET: Courses
         public ActionResult Create()
         {

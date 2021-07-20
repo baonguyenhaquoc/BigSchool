@@ -5,29 +5,27 @@ using System.Linq;
 
 namespace BigSchool.Models
 {
-    public partial class BigSchoolContext : DbContext
+    public partial class Model1 : DbContext
     {
-        public BigSchoolContext()
+        public Model1()
             : base("name=BugSchool")
         {
         }
 
-  
-        //public virtual void SetAttendances(DbSet<Attendace> value)
-        //{
-        //    attendances = value;
-        //}
-
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Course> Courses { get; set; }
-        public virtual DbSet<Attendance>Attendaces { get; set; }
-        //public object Attendances { get; internal set; }
+        public virtual DbSet<Attendance> Attendance { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Course> Course { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Course)
                 .WithRequired(e => e.Category)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Course>()
+                .HasMany(e => e.Attendance)
+                .WithRequired(e => e.Course)
                 .WillCascadeOnDelete(false);
         }
     }

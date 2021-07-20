@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BigSchool.Models.Course>
+
+@{
+    ViewBag.Title = "Mine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mine</h2>
+
+<div class="row">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <ul class="course">
+        @foreach (var course in Model)
+        {
+<li>
+    <div class="date">
+        <div class="month">
+            @course.DateTime.ToString("MM")
+        </div>
+        <div class="day">
+            @course.DateTime.ToString("dd")
+        </div>
+    </div>
+    <div class="details">
+        <span class="lecture">
+            @course.Name
+        </span>
+        <span class="category">
+            @course.Category.Name
+        </span>
+    </div>
+    <br />
+
+    <div class="action">
+        <a href="@Url.Action("Edit","Coursess", new { id = course.Id, CategoryId = course.CategoryId })" class="btn btn-primary" style="background-color:blue">Edit</a>
+        <a href="" class="btn btn-primary" style="background-color:blue">Delete</a>
+    </div>
+</li>
+        }
+    </ul>
+</div>
+

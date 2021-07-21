@@ -30,5 +30,7 @@ namespace BigSchool.Models
                 .WithRequired(e => e.Category)
                 .WillCascadeOnDelete(false);
         }
+
+        public System.Data.Entity.DbSet<BigSchool.Models.Following> Followings { get; set; }
     }
 }

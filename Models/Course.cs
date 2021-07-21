@@ -33,6 +33,12 @@ namespace BigSchool.Models
         public virtual ICollection<Attendance> Attendance { get; set; }
         public string Name;
         public List<Category> ListCategory = new List<Category>();
+
+        public bool isLogin = false; 
+        public bool isShowGoing = false; 
+        public bool isShowFollow = false;
+
+
         public virtual Category Category { get; set; }
     }
 }

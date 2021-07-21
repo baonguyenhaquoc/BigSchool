@@ -34,7 +34,12 @@ namespace BigSchool.Controllers
             BigSchoolContext context = new BigSchoolContext();
             if (context.Attendaces.Any(p => p.Attendee == userID && p.CourseId == attendanceDto.Id))
             {
-                return BadRequest("The attendance already exists !");
+                //return BadRequest("The attendance already exists !");
+                //Xoá thông tin khoá học đã đăng ký tham gia trong bảng Attend
+                context.Attendaces.Remove(context.Attendaces.SingleOrDefault(p =>
+p.Attendee == userID && p.CourseId == attendanceDto.Id));
+                context.SaveChanges();
+                return Ok("cancel");
             }
             var attendance = new Attendance() { CourseId = attendanceDto.Id, Attendee = User.Identity.GetUserId() };
             context.Attendaces.Add(attendance);

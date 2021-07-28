@@ -12,31 +12,54 @@
     <ul class="course">
         @foreach (var course in Model)
         {
-<li>
-    <div class="date">
-        <div class="month">
-            @course.DateTime.ToString("MM")
-        </div>
-        <div class="day">
-            @course.DateTime.ToString("dd")
-        </div>
-    </div>
-    <div class="details">
-        <span class="lecture">
-            @course.Name
-        </span>
-        <span class="category">
-            @course.Category.Name
-        </span>
-    </div>
-    <br />
+            <li>
+                <div class="date">
+                    <div class="month">
+                        @course.DateTime.ToString("MM")
+                    </div>
+                    <div class="day">
+                        @course.DateTime.ToString("dd")
+                    </div>
+                </div>
+                <div class="details">
+                    <span class="lecture">
+                        @course.Name
+                    </span>
+                    <span class="category">
+                        @course.Category.Name
+                    </span>
+                </div>
+                <br />
 
-    <div class="action">
-        <a href="@Url.Action("Edit","Coursess", new { id = course.Id, CategoryId = course.CategoryId })" class="btn btn-primary" style="background-color:blue">Edit</a>
-        <a href="" class="btn btn-primary" style="background-color:blue">Delete</a>
-    </div>
-</li>
+                <div class="action">
+                    <a href="@Url.Action("Edit","Coursess", new { id = course.Id, CategoryId = course.CategoryId })" class="btn btn-primary" style="background-color:blue">Edit</a>
+                    @*<a href="" class="btn btn-primary" style="background-color:blue">Delete</a>*@
+                    <a id="@course.Id" href="#" class="delete">Delete</a>
+                </div>
+            </li>
         }
     </ul>
 </div>
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".delete").click(function () {
+
+                $.ajax({
+                    type: "GET",
+                    url: "../api/DeteleCourse",
+                    data: { 'id': $(this).attr("id") },
+                    success: function (dt) {
+                        alert("Thành công")
+                        //$("body").load(@Url.Action("Mine","Coursess"));
+                    },
+                    error: function (er) {
+                        alert("Lỗi")
+                    }
+                })
+            });
+        });
+    </script>
+}
 

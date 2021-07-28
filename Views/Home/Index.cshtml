@@ -4,6 +4,12 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style >
+  
+    .row {
+        margin-top: 60px ;
+    }
+</style>
 
 <div class="row">
     <ul class="course">
@@ -49,7 +55,9 @@
                             }
                         }
                     </span>
-                    
+                    <br />
+                    <span class="idLec"
+                          @course.LecturerId
 
                 </div>
             </li>   

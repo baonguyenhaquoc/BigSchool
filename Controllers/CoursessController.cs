@@ -52,8 +52,7 @@ namespace BigSchool.Controllers
         }
 
         // POST: Coursess/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(/*[Bind(Include = "Id,LecturerId,Place,DateTime,CategoryId")]*/ Course objCourse)
@@ -107,8 +106,7 @@ namespace BigSchool.Controllers
         }
 
         // POST: Coursess/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,LecturerId,Place,DateTime,CategoryId")] Course course)
